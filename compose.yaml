@@ -5,10 +5,10 @@ services:
 
   bookmark_service:
     image: sondo580/bookmark-service:v1.0.1
+    container_name: bookmark_service
     restart: always
     depends_on:
       - redis
-    container_name: bookmark_service
     env_file:
       - ./bookmark_service/.env
 
@@ -21,6 +21,7 @@ services:
     container_name: nginx
     depends_on:
       - bookmark_service
+      - portal
     ports:
       - "80:80"
     volumes:
