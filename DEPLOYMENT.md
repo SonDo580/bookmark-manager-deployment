@@ -58,3 +58,26 @@ docker compose down
 # Run
 docker compose up -d
 ```
+
+## Domain & HTTPS
+
+1. Buy a domain name
+
+2. Onboard the domain to Cloudflare
+
+- On registrar website, replace nameservers with ones of Cloudflare.
+- On Cloudflare, go to DNS records settings:
+  - Add an `A` record pointing `@` to the VPS's public IP with **Proxy status** turned on.
+  - Optionally add a similar `A` record for `www` (or a `CNAME` record pointing `www` to `@`).
+
+3. Enable SSL/TLS
+
+- On Cloudflare, go to SSL/TLS settings:
+  - Set encryption mode to **Flexible**.
+- **TODO**:
+  - On VPS:
+    - Install certificate.
+    - Update `nginx.conf` to listen on port 443.
+    - Only allow Cloudflare's IP addresses on port 80 and 443.
+  - On Cloudflare:
+    - Switch to **Full (strict)** mode.
