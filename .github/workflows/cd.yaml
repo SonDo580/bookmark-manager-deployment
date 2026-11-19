@@ -1,0 +1,19 @@
+name: cd-pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cd_pipeline:
+    runs-on: self-hosted
+    steps:
+      - name: deploy app
+        working-directory: /root/bookmark-manager-deployment
+        run: |
+          echo "Deploying application..."
+          git pull
+          docker compose down
+          docker compose up -d
+          docker system prune -f
