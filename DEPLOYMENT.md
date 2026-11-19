@@ -41,23 +41,17 @@ nano bookmark_service/.env
 docker compose up -d
 ```
 
+## Setup self-hosted runner for CD pipeline
+
+- Follow GitHub guide to add self-hosted runner on VPS.
+- Run `export RUNNER_ALLOW_RUNASROOT=1` before setup.
+- Install and start runner as a background service.
+
 ## Subsequent times
 
-```bash
-cd <path-to-repo>
-
-# Pull latest code
-git pull
-
-# Update .env if needed
-nano bookmark_service/.env
-
-# Tear down to clear old state
-docker compose down
-
-# Run
-docker compose up -d
-```
+- Update environment variables if needed:
+  - `bookmark_service/.env`
+- Push or merge to `main`. The CD pipeline do the rest.
 
 ## Domain & HTTPS
 
