@@ -50,6 +50,7 @@ docker compose up -d
 ## Subsequent times
 
 - Update environment variables if needed:
+  - `postgres/.env`
   - `bookmark_service/.env`
 - Push or merge to `main`. The CD pipeline do the rest.
 
